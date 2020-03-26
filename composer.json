@@ -1,0 +1,25 @@
+{
+    "name": "ericmann/automaton",
+    "description": "Slack automation scripts",
+    "type": "project",
+    "require": {
+        "symfony/console": "^5.0",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eric Mann",
+            "email": "eric@eamann.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "classmap": [
+            "src"
+        ],
+        "files": [
+            "_config.php"
+        ]
+    }
+}
