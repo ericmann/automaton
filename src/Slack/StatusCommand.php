@@ -22,6 +22,7 @@ class StatusCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $presence = 'here';
         $status = $input->getArgument('status');
         $emoji = $input->getArgument('emoji' );
         $expires = 0;
@@ -43,6 +44,7 @@ class StatusCommand extends Command
                 $expires = time() + 60;
                 break;
             case 'offline':
+                $presence = 'out';
                 $status = 'AFK - 503.925.6266 if it\'s an emergency';
                 $emoji = ':offline:';
                 break;
@@ -66,7 +68,42 @@ class StatusCommand extends Command
         ]);
 
         if ($response->getStatusCode() === 200) {
-            return 0;
+            if ($presence === 'out') {
+                echo 'Going dark ...' . PHP_EOL;
+                $response = $client->request('POST', 'users.setPresence', [
+                    'headers' => [
+                        'User-Agent' => 'displacetech/automaton',
+                    ],
+                    'form_params' => [
+                        "presence" => "away",
+                        "token"    => SLACK_TOKEN
+                    ]
+                ]);
+            } else {
+                $response = $client->request('POST', 'users.setPresence', [
+                    'headers' => [
+                        'User-Agent' => 'displacetech/automaton',
+                    ],
+                    'form_params' => [
+                        "presence" => "auto",
+                        "token"    => SLACK_TOKEN
+                    ]
+                ]);
+
+                $response = $client->request('POST', 'users.setActive', [
+                    'headers' => [
+                        'User-Agent' => 'displacetech/automaton',
+                    ],
+                    'form_params' => [
+                        "token" => SLACK_TOKEN
+                    ]
+                ]);
+            }
+
+            if ($response->getStatusCode() === 200) {
+                return 0;
+            }
+
         }
 
         echo $response->getReasonPhrase();
