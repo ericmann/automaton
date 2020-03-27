@@ -31,7 +31,6 @@ class StatusCommand extends Command
             case 'wfh':
                 $status = 'Working from home ...';
                 $emoji = ':wfh:';
-                $expires = time() + 60;
                 break;
             case 'meeting':
                 $status = 'In a meeting ...';
