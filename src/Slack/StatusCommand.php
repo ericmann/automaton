@@ -35,12 +35,12 @@ class StatusCommand extends Command
             case 'meeting':
                 $status = 'In a meeting ...';
                 $emoji = ':meeting:';
-                $expires = time() + 60;
+                $expires = time() + (60 * 60);
                 break;
             case 'lunch':
                 $status = 'AFK - eating something';
                 $emoji = ':lunch:';
-                $expires = time() + 60;
+                $expires = time() + (60 * 60);
                 break;
             case 'offline':
                 $presence = 'out';
