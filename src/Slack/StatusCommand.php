@@ -48,6 +48,7 @@ class StatusCommand extends Command
                 $status = 'OOO - @ me or 503.925.6266 if needed';
                 $emoji = ':children_crossing:';
                 $expires = time() + (4 * 60 * 60); // 4 hours
+                break;
             case 'offline':
                 $presence = 'out';
                 $status = 'AFK - 503.925.6266 if it\'s an emergency';
