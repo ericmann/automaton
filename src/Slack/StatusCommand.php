@@ -29,7 +29,7 @@ class StatusCommand extends Command
 
         switch($status) {
             case 'wfh':
-                $status = 'Working from home ...';
+                $status = 'WFH: 7-9am, 1-5pm, 8-10pm. Please see calendar for availability.';
                 $emoji = ':wfh:';
                 break;
             case 'meeting':
