@@ -29,7 +29,7 @@ class StatusCommand extends Command
 
         switch($status) {
             case 'wfh':
-                $status = 'WFH: 7-9am, 1-5pm, 8-10pm. Please see calendar for availability.';
+                $status = 'WFH - Please see calendar for availability.';
                 $emoji = ':wfh:';
                 break;
             case 'meeting':
@@ -45,7 +45,7 @@ class StatusCommand extends Command
                 break;
             case 'kids':
                 $presence = 'out';
-                $status = 'OOO - @ me or 503.925.6266 if needed';
+                $status = 'OOO for childcare - @ me or 503.925.6266 if needed';
                 $emoji = ':children_crossing:';
                 $expires = time() + (4 * 60 * 60); // 4 hours
                 break;
